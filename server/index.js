@@ -7,4 +7,10 @@ const app = express();
 
 
 
-app.listen(port, console.log(`Server is running on ${port}`));
+app.listen(port, (err) => {
+    if (err) {
+        console.log("err", err)
+    }
+    console.log(`Server is running on ${port}`
+    )
+});
