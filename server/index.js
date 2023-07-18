@@ -4,6 +4,8 @@ const port = process.env.PORT || 9000;
 const cors = require('cors');
 const { graphqlHTTP } = require("express-graphql");
 const schema = require('./schema/schema');
+const connectDB = require('./config/db');
+
 
 
 const app = express();
@@ -14,19 +16,8 @@ app.get('/', (req, res) => {
     res.send({ string: 'Hello World!' })
 })
 
-// // Schema
-// var schema = buildSchema(`
-//   type Query {
-//     hello: String
-//   }
-// `)
-
-// The root provides a resolver function for each API endpoint
-var root = {
-    hello: () => {
-        return "Hello world!"
-    },
-}
+// Database connection
+connectDB();
 
 app.use(cors());
 
@@ -40,5 +31,5 @@ app.use(
 );
 
 app.listen(port, () => {
-    console.log(`Example app listening on port ${port}`)
+    console.log(`Example app listening on port http://localhost:${port}`)
 })
