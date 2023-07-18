@@ -1,15 +1,17 @@
 const express = require('express');
 require('dotenv').config();
-const port = process.env.PORT || 7000;
-
+const port = process.env.PORT || 9000;
+const cors = require('cors');
 const { graphqlHTTP } = require("express-graphql");
-var { buildSchema } = require("graphql");
+const schema = require('./schema/schema');
 
 
 const app = express();
 
+
 app.get('/', (req, res) => {
-    res.send("GET Request Called")
+    console.log("inside")
+    res.send({ string: 'Hello World!' })
 })
 
 // // Schema
@@ -26,19 +28,15 @@ app.get('/', (req, res) => {
 //     },
 // }
 
-// graphql middleware
-// app.use("/graphql",
-//     graphqlHTTP({
-//         schema: schema,
-//         rootValue: root,
-//         graphiql: process.env.NODE_ENV === 'development',
-//     })
-// )
 
-app.listen(port, (err) => {
-    if (err) {
-        console.log("err", err)
-    }
-    console.log(`Server is running on http://localhost:${port}/`
-    )
-});
+// graphql middleware
+app.use("/graphql",
+    graphqlHTTP({
+        schema,
+        graphiql: process.env.NODE_ENV === 'development',
+    })
+)
+
+app.listen(port, () => {
+    console.log(`Example app listening on port ${port}`)
+})
