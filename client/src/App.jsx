@@ -1,13 +1,27 @@
 import "./App.css";
 import Header from "./components/Header";
 import Clients from "./components/Clients";
+import AddClientModal from "./components/AddClientModel";
+import { ApolloClient, InMemoryCache, ApolloProvider } from "@apollo/client";
 
-import {
-  ApolloClient,
-  InMemoryCache,
-  ApolloProvider,
-  gql,
-} from "@apollo/client";
+// const cache = new InMemoryCache({
+//   typePolicies: {
+//     Query: {
+//       fields: {
+//         clients: {
+//           merge(existing, incoming) {
+//             return incoming;
+//           },
+//         },
+//         projects: {
+//           merge(existing, incoming) {
+//             return incoming;
+//           },
+//         },
+//       },
+//     },
+//   },
+// });
 
 // Apollo Client Setup
 const client = new ApolloClient({
@@ -21,6 +35,7 @@ function App() {
       <ApolloProvider client={client}>
         <Header />
         <div className="container">
+          <AddClientModal />
           <Clients />
         </div>
       </ApolloProvider>

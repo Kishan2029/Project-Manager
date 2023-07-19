@@ -1,10 +1,10 @@
 import React from "react";
 import { useQuery, useMutation } from "@apollo/client";
-import { GET_CLIENTS } from "../../quries/clientQuries";
-import { DELETE_CLIENT } from "../mutation/clientMutation";
 
 import Spinner from "./Spinner";
 import ClientRow from "./ClientRow";
+import { GET_CLIENTS } from "../quries/clientQuries";
+import { DELETE_CLIENT } from "../mutation/clientMutation";
 
 const Clients = () => {
   const { loading, error, data } = useQuery(GET_CLIENTS);
