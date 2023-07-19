@@ -1,13 +1,29 @@
-import { useState } from "react";
 import "./App.css";
 import Header from "./components/Header";
+import Clients from "./components/Clients";
+
+import {
+  ApolloClient,
+  InMemoryCache,
+  ApolloProvider,
+  gql,
+} from "@apollo/client";
+
+// Apollo Client Setup
+const client = new ApolloClient({
+  uri: `${import.meta.env.VITE_BACKEND_URL}/graphql`,
+  cache: new InMemoryCache(),
+});
 
 function App() {
-  const [count, setCount] = useState(0);
-
   return (
     <>
-      <Header />
+      <ApolloProvider client={client}>
+        <Header />
+        <div className="container">
+          <Clients />
+        </div>
+      </ApolloProvider>
     </>
   );
 }
