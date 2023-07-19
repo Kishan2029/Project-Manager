@@ -123,17 +123,19 @@ const mutation = new GraphQLObjectType({
                     }),
                     defaultValue: 'Not Started',
                 },
-                client: { type: GraphQLNonNull(GraphQLID) },
+                // clientId: { type: GraphQLNonNull(GraphQLID) },
+                clientId: { type: GraphQLNonNull(GraphQLString) },
             },
             resolve(parent, args) {
                 const project = new Project({
                     name: args.name,
                     description: args.description,
                     status: args.status,
-                    client: args.client,
-                })
+                    clientId: args.clientId,
+                });
+
                 return project.save();
-            }
+            },
         },
     }
 })
