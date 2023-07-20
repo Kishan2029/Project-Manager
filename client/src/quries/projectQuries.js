@@ -20,8 +20,10 @@ const GET_PROJECT = gql`
     project(id:$id) {
         id
         name
+        description
         status
         client{
+          id
           name
           phone
           email

@@ -3,10 +3,12 @@ import { Link, useParams } from "react-router-dom";
 import { useQuery } from "@apollo/client";
 import { GET_PROJECT } from "../quries/projectQuries";
 import Spinner from "../components/Spinner";
+import ClientInfo from "../components/ClientInfo";
 
 const Project = () => {
   const { id } = useParams();
   const { loading, error, data } = useQuery(GET_PROJECT, { variables: { id } });
+  console.log("data", data);
 
   if (loading) return <Spinner />;
   if (error) return <p>Something Went Wrong</p>;
@@ -25,7 +27,7 @@ const Project = () => {
           <h5 className="mt-3">Project Status</h5>
           <p className="lead">{data.project.status}</p>
 
-          {/* <ClientInfo client={data.project.client} /> */}
+          <ClientInfo client={data.project.client} />
 
           {/* <EditProjectForm project={data.project} />
 

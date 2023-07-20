@@ -1,15 +1,14 @@
 import AddClientModal from "../components/AddClientModal";
 import Clients from "../components/Clients";
 import Projects from "../components/Projects";
-
-// import AddProjectModal from "../components/AddProjectModal";
+import AddProjectModal from "../components/AddProjectModal";
 
 const Home = () => {
   return (
     <>
       <div className="d-flex gap-3 mb-4">
         <AddClientModal />
-        {/* <AddProjectModal /> */}
+        <AddProjectModal />
       </div>
       <Projects />
       <hr />

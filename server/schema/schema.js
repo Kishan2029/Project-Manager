@@ -1,4 +1,3 @@
-
 const {
     GraphQLObjectType,
     GraphQLID,
@@ -122,8 +121,8 @@ const mutation = new GraphQLObjectType({
                     }),
                     defaultValue: 'Not Started',
                 },
-                // clientId: { type: GraphQLNonNull(GraphQLID) },
-                clientId: { type: GraphQLNonNull(GraphQLString) },
+                clientId: { type: GraphQLNonNull(GraphQLID) },
+                // clientId: { type: GraphQLNonNull(GraphQLString) },
             },
             resolve(parent, args) {
                 const project = new Project({
