@@ -34,6 +34,7 @@ export default function AddProjectModal() {
       return alert("Please fill in all fields");
     }
     console.log("add projects");
+    console.log(status);
     addProject(name, description, clientId, status);
 
     setName("");
